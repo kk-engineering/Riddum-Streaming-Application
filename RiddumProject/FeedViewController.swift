@@ -104,7 +104,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "playerVC")
         
         self.present(vc, animated: true, completion: nil)
-        
     }
  
     required init?(coder aDecoder: NSCoder) {
@@ -113,7 +112,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // initialize tab bar item
         tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "airpods"), tag: 1)
     }
-
 }
  
 // extension UIImageView {
