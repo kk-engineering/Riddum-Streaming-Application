@@ -12,7 +12,7 @@ import Firebase
 class SearchViewController: UITableViewController, UISearchResultsUpdating {
 
     @IBOutlet var searchTableView: UITableView!
-    
+    //test
     let searchController = UISearchController(searchResultsController: nil)
     var tracksArray = [NSDictionary?]()
     var filteredTracks = [NSDictionary?]()
