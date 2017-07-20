@@ -13,4 +13,5 @@ Open RiddumApp.xcworkspace
 
 ## Author
 
-Med Kaikai <medkaikai@gmail.com>
+Med Kaikai <br/>
+<medkaikai@gmail.com>
