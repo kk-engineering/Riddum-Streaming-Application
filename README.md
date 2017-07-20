@@ -7,8 +7,8 @@ the data for tracks being stored in JSON using the Firebase service as a Backend
 
 ## How To Access
 
-Using Xcode
-Open RiddumApp Folder
+Using Xcode <br/>
+Open RiddumApp Folder<br/>
 Open RiddumApp.xcworkspace
 
 ## Author
