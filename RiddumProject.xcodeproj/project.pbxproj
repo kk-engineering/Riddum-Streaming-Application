@@ -10,6 +10,7 @@
 		56EA06C022461C0F5A48B228 /* Pods_RiddumProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2656384B9BF317A567BA18F1 /* Pods_RiddumProject.framework */; };
 		80BF1B501F21632900044839 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 80BF1B4E1F21632900044839 /* search@2x.png */; };
 		80BF1B511F21632900044839 /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 80BF1B4F1F21632900044839 /* search@3x.png */; };
+		80BF1B541F21925C00044839 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 80BF1B531F21925C00044839 /* README.md */; };
 		D90F33691E9982A7004035E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90F33681E9982A7004035E4 /* AppDelegate.swift */; };
 		D90F336E1E9982A7004035E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90F336C1E9982A7004035E4 /* Main.storyboard */; };
 		D90F33701E9982A7004035E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D90F336F1E9982A7004035E4 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		699A0F76A52141ED5AB304BD /* Pods-RiddumProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RiddumProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-RiddumProject/Pods-RiddumProject.release.xcconfig"; sourceTree = "<group>"; };
 		80BF1B4E1F21632900044839 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		80BF1B4F1F21632900044839 /* search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@3x.png"; sourceTree = "<group>"; };
+		80BF1B531F21925C00044839 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D90F33651E9982A7004035E4 /* RiddumProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiddumProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D90F33681E9982A7004035E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D90F336D1E9982A7004035E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		D90F335C1E9982A7004035E4 = {
 			isa = PBXGroup;
 			children = (
+				80BF1B531F21925C00044839 /* README.md */,
 				D90F33671E9982A7004035E4 /* RiddumProject */,
 				D90F33661E9982A7004035E4 /* Products */,
 				1A6B62B685E260E806014C65 /* Pods */,
@@ -447,6 +450,7 @@
 			files = (
 				D93AE66E1E9C0FFA00C0EDFB /* TrackCell.swift in Sources */,
 				D9E96E0B1F18A6D4006E8D6A /* SearchViewController.swift in Sources */,
+				80BF1B541F21925C00044839 /* README.md in Sources */,
 				D9E96E091F1855D6006E8D6A /* Track.swift in Sources */,
 				D90F337F1E99B46E004035E4 /* LoginViewController.swift in Sources */,
 				D93AE6761E9C17C300C0EDFB /* User.swift in Sources */,
