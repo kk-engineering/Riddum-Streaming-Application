@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		56EA06C022461C0F5A48B228 /* Pods_RiddumProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2656384B9BF317A567BA18F1 /* Pods_RiddumProject.framework */; };
+		80BF1B501F21632900044839 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 80BF1B4E1F21632900044839 /* search@2x.png */; };
+		80BF1B511F21632900044839 /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 80BF1B4F1F21632900044839 /* search@3x.png */; };
 		D90F33691E9982A7004035E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90F33681E9982A7004035E4 /* AppDelegate.swift */; };
 		D90F336E1E9982A7004035E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90F336C1E9982A7004035E4 /* Main.storyboard */; };
 		D90F33701E9982A7004035E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D90F336F1E9982A7004035E4 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 /* Begin PBXFileReference section */
 		2656384B9BF317A567BA18F1 /* Pods_RiddumProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RiddumProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		699A0F76A52141ED5AB304BD /* Pods-RiddumProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RiddumProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-RiddumProject/Pods-RiddumProject.release.xcconfig"; sourceTree = "<group>"; };
+		80BF1B4E1F21632900044839 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
+		80BF1B4F1F21632900044839 /* search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@3x.png"; sourceTree = "<group>"; };
 		D90F33651E9982A7004035E4 /* RiddumProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiddumProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D90F33681E9982A7004035E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D90F336D1E9982A7004035E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,6 +113,15 @@
 				2656384B9BF317A567BA18F1 /* Pods_RiddumProject.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80BF1B521F21633100044839 /* Search  */ = {
+			isa = PBXGroup;
+			children = (
+				80BF1B4E1F21632900044839 /* search@2x.png */,
+				80BF1B4F1F21632900044839 /* search@3x.png */,
+			);
+			name = "Search ";
 			sourceTree = "<group>";
 		};
 		D90F335C1E9982A7004035E4 = {
@@ -195,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				D95054181EC4740D00B859F8 /* RIDDUMLOGO.png */,
+				80BF1B521F21633100044839 /* Search  */,
 				D95054131EC0002E00B859F8 /* Chevron Down 50, 100 px */,
 				D950540E1EC0002600B859F8 /* Rewind Filled 50, 100 px */,
 				D95054091EC0001B00B859F8 /* Fast Forward Filled 50, 100 px */,
@@ -351,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D95053F91EBFF8EB00B859F8 /* friends@2x.png in Resources */,
+				80BF1B511F21632900044839 /* search@3x.png in Resources */,
 				D95054071EC0000000B859F8 /* Circled Pause Filled_100.png in Resources */,
 				D95054111EC0002600B859F8 /* Rewind Filled_100.png in Resources */,
 				D95054031EBFFFF300B859F8 /* Circled Play Filled_50.png in Resources */,
@@ -362,6 +377,7 @@
 				D95053F31EBFF8E100B859F8 /* airpods@3x.png in Resources */,
 				D90F33731E9982A7004035E4 /* LaunchScreen.storyboard in Resources */,
 				D95053FE1EBFF90000B859F8 /* Activity Feed_50.png in Resources */,
+				80BF1B501F21632900044839 /* search@2x.png in Resources */,
 				D95054161EC0002E00B859F8 /* Chevron Down_100.png in Resources */,
 				D95053F81EBFF8EB00B859F8 /* friends@3x.png in Resources */,
 				D90F33701E9982A7004035E4 /* Assets.xcassets in Resources */,

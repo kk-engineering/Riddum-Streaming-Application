@@ -1,4 +1,4 @@
- //
+//
 //  UsersViewController.swift
 //  RiddumProject
 //
@@ -10,30 +10,30 @@ import UIKit
 import Firebase
 import AVKit
 import AVFoundation
- 
+
 var player = AVPlayer()
 var uploadDate = [String]()
 var counter = 0
 var trackName = [String]()
 var playerFilled = false
- 
+
 var trackData: [Track] = []
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tableView: UITableView!
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        retrieveTracks()      
+        retrieveTracks()
     }
     
     func retrieveTracks() {
         let ref = FIRDatabase.database().reference()
         
         trackData.removeAll()
-
+        
         ref.child("tracks").observe(.value, with: { (snapshot) in
             
             for item in snapshot.children.allObjects {
@@ -54,7 +54,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.nameLabel.text = trackData[indexPath.row].title
         
-        let currentTrackImage = trackData[indexPath.row].image_url
+        let currentTrackImage = trackData[indexPath.row].imageUrl
         let currentTrackImageUrl = FIRStorage.storage().reference(forURL: currentTrackImage!)
         
         currentTrackImageUrl.downloadURL(completion: { (urll, err) in
@@ -79,7 +79,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trackData.count
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let currentTrack = trackData[indexPath.row].url
@@ -105,7 +105,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.present(vc, animated: true, completion: nil)
     }
- 
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -113,25 +113,24 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "airpods"), tag: 1)
     }
 }
- 
-// extension UIImageView {
-//    
-//    func downloadImage(from imgURL: String!) {
-//        let url = URLRequest(url: URL(string: imgURL)!)
-//        
-//        let task = URLSession.shared.dataTask(with: url) {
-//            (data, response, error) in
-//            
-//            if error != nil {
-//                print(error!)
-//                return
-//            }
-//            
-//            DispatchQueue.main.async {
-//                self.image = UIImage(data: data!)
-//            }          
-//        }
-//        task.resume()
-//
-//    }
-// }
+
+extension UIImageView {
+    
+    func downloadImage(from imgURL: String!) {
+        let url = URLRequest(url: URL(string: imgURL)!)
+        
+        let task = URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.image = UIImage(data: data!)
+            }
+        }
+        task.resume()
+    }
+}

@@ -10,9 +10,9 @@ import UIKit
 import Firebase
 
 class SearchViewController: UITableViewController, UISearchResultsUpdating {
-
+    
     @IBOutlet var searchTableView: UITableView!
-    //test
+    
     let searchController = UISearchController(searchResultsController: nil)
     var tracksArray = [NSDictionary?]()
     var filteredTracks = [NSDictionary?]()
@@ -21,12 +21,19 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupSearchController()
+        retrieveTracksForSearch()
+    }
+    
+    func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
-        
+    }
+    
+    func retrieveTracksForSearch() {
         databaseRef.child("tracks").queryOrdered(byChild: "title").observe(.childAdded, with: { (snapshot) in
             
             self.tracksArray.append(snapshot.value as? NSDictionary)
@@ -41,7 +48,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContent(searchText: self.searchController.searchBar.text!)
     }
-
+    
     func filterContent(searchText: String) {
         self.filteredTracks = self.tracksArray.filter{ track in
             let trackTitle = track!["title"] as? String
@@ -50,25 +57,23 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         }
         tableView.reloadData()
     }
-
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController .isActive && searchController.searchBar.text != "" {
             return filteredTracks.count
         }
         return self.tracksArray.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
-
+        
         let track : NSDictionary?
-
+        
         if searchController .isActive && searchController.searchBar.text != "" {
             
             track = filteredTracks[indexPath.row]
@@ -83,4 +88,9 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         return cell
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search"), tag: 2)
+    }
 }

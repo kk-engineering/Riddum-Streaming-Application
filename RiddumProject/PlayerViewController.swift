@@ -31,7 +31,7 @@ class PlayerViewController: UIViewController {
     
     // retrieves cover art of track
     func retrieveCoverArt() {
-        let currentTrackImage = trackData[counter].image_url
+        let currentTrackImage = trackData[counter].imageUrl
         
         let currentTrackImageUrl = FIRStorage.storage().reference(forURL: currentTrackImage!)
         currentTrackImageUrl.downloadURL(completion: { (urll, err) in
@@ -50,7 +50,6 @@ class PlayerViewController: UIViewController {
                 self.coverImage.image = imageData
             }).resume()
         })
-        
     }
     
     //retrieves metadata of track
@@ -74,7 +73,7 @@ class PlayerViewController: UIViewController {
             }
         }
     }
- 
+    
     // playerFilled globally set to 'false' in FeedViewController
     // represents a track being loaded in the player
     // timeControlStatus represents the status of the player
@@ -85,7 +84,7 @@ class PlayerViewController: UIViewController {
             player.play()
         }
     }
-
+    
     // action for pause button
     @IBAction func pause(_ sender: Any) {
         if playerFilled == true && player.timeControlStatus == .playing {
