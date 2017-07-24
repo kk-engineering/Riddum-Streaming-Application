@@ -1,8 +1,8 @@
 //
-//  PlayerViewController.swift
+//  SearchPlayerViewController.swift
 //  RiddumProject
 //
-//  Created by Med Kaikai on 2017-04-27.
+//  Created by Med Kaikai on 2017-07-23.
 //  Copyright © 2017 MedKaikai. All rights reserved.
 //
 
@@ -11,7 +11,9 @@ import AVKit
 import AVFoundation
 import Firebase
 
-class PlayerViewController: UIViewController {
+class SearchPlayerViewController: UIViewController {
+    
+    var track : NSDictionary?
     
     // UI Outlets.
     @IBOutlet weak var trackLabel: UILabel!
@@ -19,19 +21,34 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var uploadLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         retrieveCoverArt()
         retrieveMetadata()
         
-        trackLabel.text = trackData[counter].title
-    }
-    
+        // If the searchController has been used the title from the array of filteredTracks is used for the textLabel, otherwise the title from the tracksArray is used.
+        if searchController .isActive && searchController.searchBar.text != "" {
+            track = filteredTracks[counter]
+        } else {
+            track = tracksArray[counter]
+        }
+        
+        trackLabel.text = track?["title"] as? String
+    }    
+
+
     // Retrieves cover art of track.
     func retrieveCoverArt() {
-        let currentTrackImage = trackData[counter].imageUrl
+        
+        if searchController .isActive && searchController.searchBar.text != "" {
+            track = filteredTracks[counter]
+        } else {
+            track = tracksArray[counter]
+        }
+        
+        let currentTrackImage = track?["image_url"] as? String
         
         let currentTrackImageUrl = FIRStorage.storage().reference(forURL: currentTrackImage!)
         currentTrackImageUrl.downloadURL(completion: { (urll, err) in
@@ -54,7 +71,14 @@ class PlayerViewController: UIViewController {
     
     // Retrieves metadata of track.
     func retrieveMetadata() {
-        let currentTrack = trackData[counter].url
+        
+        if searchController .isActive && searchController.searchBar.text != "" {
+            track = filteredTracks[counter]
+        } else {
+            track = tracksArray[counter]
+        }
+        
+        let currentTrack = track?["url"] as? String
         
         let currentTrackUrl = FIRStorage.storage().reference(forURL: currentTrack!)
         currentTrackUrl.metadata { (metadata, error) in
@@ -90,6 +114,8 @@ class PlayerViewController: UIViewController {
             player.pause()
         }
     }
+    
+    // Previous & Next buttons return to trackData array for playback.
     
     // Action for previous button.
     // Counter goes to previous object in trackData array.

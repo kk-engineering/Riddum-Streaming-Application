@@ -8,16 +8,19 @@
 
 import UIKit
 import Firebase
+import AVKit
+import AVFoundation
+
+let searchController = UISearchController(searchResultsController: nil)
+var tracksArray = [NSDictionary?]()
+var filteredTracks = [NSDictionary?]()
 
 class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
     @IBOutlet var searchTableView: UITableView!
     
-    let searchController = UISearchController(searchResultsController: nil)
-    var tracksArray = [NSDictionary?]()
-    var filteredTracks = [NSDictionary?]()
-    
-    var databaseRef = FIRDatabase.database().reference()
+    // Reference to Firebase Database.
+    var ref = FIRDatabase.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         retrieveTracksForSearch()
     }
     
+    // Creates search controller and appends search bar to tableView's header.
     func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -33,12 +37,15 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         tableView.tableHeaderView = searchController.searchBar
     }
     
+    // Retrieves tracks from Firebase Database and appends this data to tracksArray. Rows are then inserted into the searchTableView.
     func retrieveTracksForSearch() {
-        databaseRef.child("tracks").queryOrdered(byChild: "title").observe(.childAdded, with: { (snapshot) in
+        tracksArray.removeAll()
+        
+        ref.child("tracks").queryOrdered(byChild: "title").observe(.childAdded, with: { (snapshot) in
             
-            self.tracksArray.append(snapshot.value as? NSDictionary)
+            tracksArray.append(snapshot.value as? NSDictionary)
             
-            self.searchTableView.insertRows(at: [IndexPath(row: self.tracksArray.count-1, section:0)], with: UITableViewRowAnimation.automatic)
+            self.searchTableView.insertRows(at: [IndexPath(row: tracksArray.count-1, section:0)], with: UITableViewRowAnimation.automatic)
             
         }) { (error) in
             print(error.localizedDescription)
@@ -46,11 +53,12 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        filterContent(searchText: self.searchController.searchBar.text!)
+        filterContent(searchText: searchController.searchBar.text!)
     }
     
+    // Filters all content of title in tracksArray with matches from data in searchText.
     func filterContent(searchText: String) {
-        self.filteredTracks = self.tracksArray.filter{ track in
+        filteredTracks = tracksArray.filter{ track in
             let trackTitle = track!["title"] as? String
             
             return(trackTitle?.lowercased().contains(searchText.lowercased()))!
@@ -66,7 +74,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         if searchController .isActive && searchController.searchBar.text != "" {
             return filteredTracks.count
         }
-        return self.tracksArray.count
+        return tracksArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,18 +82,52 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         
         let track : NSDictionary?
         
+        // If the searchController is being used the title from the array of filteredTracks is used and presented in the cell as the textLabel, otherwise the title from the tracksArray is used. 
         if searchController .isActive && searchController.searchBar.text != "" {
-            
             track = filteredTracks[indexPath.row]
-            
         } else {
-            track = self.tracksArray[indexPath.row]
+            track = tracksArray[indexPath.row]
         }
         
         cell.textLabel?.text = track?["title"] as? String
         cell.detailTextLabel?.text = track?["artist"] as? String
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let track : NSDictionary?
+        
+        if searchController .isActive && searchController.searchBar.text != "" {
+            track = filteredTracks[indexPath.row]            
+        } else {
+            track = tracksArray[indexPath.row]
+        }
+
+        let currentTrack = track?["url"] as? String
+        
+        // Downloads track from url for playback via AVPlayer.
+        let currentTrackUrl = FIRStorage.storage().reference(forURL: currentTrack!)
+        currentTrackUrl.downloadURL { (url, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            } else {
+                player = AVPlayer(url: url! as URL)
+                player.play()
+            }
+        }
+        
+        counter = indexPath.row
+        playerFilled = true
+        
+        self.tableView.reloadData()
+        
+        // Present Player View Controller when row is selected.
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "searchPlayerVC")
+        
+        self.present(vc, animated: true, completion: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {

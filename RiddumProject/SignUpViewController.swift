@@ -29,19 +29,19 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
         picker.delegate = self
 
         let storage = FIRStorage.storage().reference(forURL: "gs://riddum-streaming-app.appspot.com")
-        // reference to firebase storage
+        // Reference to firebase storage.
         
         ref = FIRDatabase.database().reference()
-        // reference to firebase database
+        // Reference to firebase database.
         
         userStorage = storage.child("users")
-        // reference to firebase storage
+        // Reference to firebase storage.
     }
     
 
     @IBAction func selectImagePressed(_ sender: Any) {
         
-        // presents picker showcasing images from user photo library
+        // Presents picker showcasing images from user photo library.
         picker.allowsEditing = true
         picker.sourceType = .photoLibrary
         
@@ -59,13 +59,13 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     @IBAction func nextPressed(_ sender: Any) {
         
-        // checks for user input in text fields when next button activated
+        // Checks for user input in text fields when next button activated.
         guard nameField.text != "", emailField.text != "", passwordField.text != "", confirmPassField.text != "" else {
                 print("User not entered any information")
             return
             }
         
-        // creates user account in firebase authentication once fields are entered correctly
+        // Creates user account in firebase authentication once fields are entered correctly.
         if passwordField.text == confirmPassField.text {
             FIRAuth.auth()?.createUser(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in
                 
@@ -80,7 +80,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
                      changeRequest.commitChanges(completion: nil)
                     
                     
-                     // stores profile image into firebase storage
+                     // Stores profile image into firebase storage.
                      let imageRef = self.userStorage.child("\(user.uid).jpg ")
                     
                      let data = UIImageJPEGRepresentation(self.imageView.image!, 0.5)
@@ -90,7 +90,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
                             print(err!.localizedDescription)
                         }
                         
-                        // retrieves url of profile image
+                        // Retrieves url of profile image.
                         imageRef.downloadURL(completion: { (url, er) in
                             if er != nil {
                                 print (er!.localizedDescription)
@@ -102,10 +102,10 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
                                                                 "username" : self.nameField.text!,
                                                                 "urlToImage" : url.absoluteString ]
                                 
-                                // stores value of userInfo array into users into Firebase Database
+                                // Stores value of userInfo array into users into Firebase Database.
                                 self.ref.child("users").child(user.uid).setValue(userInfo)
                                 
-                                // present tab bar controller
+                                // Present tab bar controller.
                                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabVC")
                                 
                                 self.present(vc, animated: true, completion: nil)

@@ -16,24 +16,23 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
-    // checks for user input in text fields when login button activated
+    // Checks for user input in text fields when login button activated.
     @IBAction func loginPressed(_ sender: Any) {
         guard emailField.text != "", passwordField.text != "" else {
             print("User not entered any information")
             return
         }
         
-        // authorizes user account using firebase authentication
+        // Authorizes user account using firebase authentication.
         FIRAuth.auth()?.signIn(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in
             
             if let error = error {
                 print(error.localizedDescription)
             }
             
-            //presents tab bar controller
+            //Presents tab bar controller.
             if user != nil {
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabVC")
                 

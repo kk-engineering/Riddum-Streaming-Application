@@ -15,10 +15,7 @@ struct Track {
     var artist: String!
     var imageUrl: String!
     var url: String!
-    var likes: Int!
-    
-    var likedBy: [String] = [String]()
-    
+        
     init(title: String, artist: String, image_url: String, url: String) {
         self.title = title
         self.artist = artist

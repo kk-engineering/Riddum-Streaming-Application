@@ -29,6 +29,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         retrieveTracks()
     }
     
+    // Retrieve tracks from Firebase Database and stores data in Track object.
     func retrieveTracks() {
         let ref = FIRDatabase.database().reference()
         
@@ -54,9 +55,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.nameLabel.text = trackData[indexPath.row].title
         
+        // Retrieves url of cover art image of current track
         let currentTrackImage = trackData[indexPath.row].imageUrl
         let currentTrackImageUrl = FIRStorage.storage().reference(forURL: currentTrackImage!)
         
+        // Downloads track cover art from url and appends to cell.
         currentTrackImageUrl.downloadURL(completion: { (urll, err) in
             if err != nil {
                 print(err!.localizedDescription)
@@ -82,8 +85,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        // Retrieves the url of the current track from trackData array.
         let currentTrack = trackData[indexPath.row].url
         
+        // Downloads track from url for playback via AVPlayer.
         let currentTrackUrl = FIRStorage.storage().reference(forURL: currentTrack!)
         currentTrackUrl.downloadURL { (url, error) in
             if error != nil {
@@ -100,7 +105,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.tableView.reloadData()
         
-        // present player view controller when row is selected
+        // Present Player View Controller when row is selected.
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "playerVC")
         
         self.present(vc, animated: true, completion: nil)
@@ -109,28 +114,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        // initialize tab bar item
+        // Initialize tab bar item.
         tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "airpods"), tag: 1)
-    }
-}
-
-extension UIImageView {
-    
-    func downloadImage(from imgURL: String!) {
-        let url = URLRequest(url: URL(string: imgURL)!)
-        
-        let task = URLSession.shared.dataTask(with: url) {
-            (data, response, error) in
-            
-            if error != nil {
-                print(error!)
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self.image = UIImage(data: data!)
-            }
-        }
-        task.resume()
     }
 }
