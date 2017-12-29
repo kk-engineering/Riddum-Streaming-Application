@@ -20,13 +20,17 @@ class SearchPlayerViewController: UIViewController {
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var uploadLabel: UILabel!
 
+    @IBOutlet weak var artistLabel: UILabel!
+    
+    @IBOutlet weak var timeSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         retrieveCoverArt()
         retrieveMetadata()
+        setupSlider()
         
         // If the searchController has been used the title from the array of filteredTracks is used for the textLabel, otherwise the title from the tracksArray is used.
         if searchController .isActive && searchController.searchBar.text != "" {
@@ -36,6 +40,9 @@ class SearchPlayerViewController: UIViewController {
         }
         
         trackLabel.text = track?["title"] as? String
+        artistLabel.text = track?["artist"] as? String
+        
+
     }    
 
 
@@ -93,7 +100,7 @@ class SearchPlayerViewController: UIViewController {
                 dateFormatter.dateFormat = "EEE, dd MMM yyyy"
                 let trackCreated = metadata!.timeCreated
                 let newDate = dateFormatter.string(from: trackCreated!)
-                self.uploadLabel.text = ("Added: \(newDate)")
+                //self.uploadLabel.text = ("Added: \(newDate)")
             }
         }
     }
@@ -103,15 +110,15 @@ class SearchPlayerViewController: UIViewController {
     
     // Action for play button.
     @IBAction func play(_ sender: Any) {
-        if playerFilled == true && player.timeControlStatus == .paused {
-            player.play()
+        if playerFilled == true && player?.timeControlStatus == .paused {
+            player?.play()
         }
     }
     
     // Action for pause button.
     @IBAction func pause(_ sender: Any) {
-        if playerFilled == true && player.timeControlStatus == .playing {
-            player.pause()
+        if playerFilled == true && player?.timeControlStatus == .playing {
+            player?.pause()
         }
     }
     
@@ -141,12 +148,37 @@ class SearchPlayerViewController: UIViewController {
         }
     }
     
-    // Action for slider control.
-    @IBAction func slider(_ sender: UISlider) {
-        if playerFilled == true {
-            player.volume = sender.value
-        }
+//    // Action for slider control.
+//    @IBAction func slider(_ sender: UISlider) {
+//        if playerFilled == true {
+//            player.volume = sender.value
+//        }
+//    }
+    
+    func setupSlider() {
+        
+        timeSlider.minimumValue = 0
+        
+//        let duration : CMTime = playerItem.asset.duration
+//        let seconds : Float64 = CMTimeGetSeconds(duration)
+//        print("Seconds + \(seconds)")
+        
+        timeSlider.maximumValue = Float(34.3)
+        timeSlider.isContinuous = false
+        timeSlider.tintColor = UIColor.green
+        
+//        player.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, 1), queue: DispatchQueue.main) { (CMTime) -> Void in
+//            if player.currentItem?.status == .readyToPlay {
+//                let time : Float64 = CMTimeGetSeconds(player.currentTime());
+//                self.timeSlider.value = Float ( time );
+//            }
+        //}
     }
+    
+    
+    
+    
+    
     
     // Retrieves url of current track.
     // Contents of url passed into AVPlayer for audio playback.
@@ -159,8 +191,14 @@ class SearchPlayerViewController: UIViewController {
                 print(error!.localizedDescription)
                 return
             } else {
-                player = AVPlayer(url: url! as URL)
-                player.play()
+//                player = AVPlayer(url: url! as URL)
+//                player.play()
+                
+                let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
+                player = AVPlayer(playerItem: playerItem)
+                player?.play()
+                
+
             }
         }
     }

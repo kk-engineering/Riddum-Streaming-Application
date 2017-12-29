@@ -11,7 +11,9 @@ import Firebase
 import AVKit
 import AVFoundation
 
-var player = AVPlayer()
+var player:AVPlayer?
+var playerItem:AVPlayerItem?
+
 var uploadDate = [String]()
 var counter = 0
 var trackName = [String]()
@@ -23,10 +25,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavBar()
         retrieveTracks()
+    }
+    
+    func setupNavBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir", size: 34)!]
     }
     
     // Retrieve tracks from Firebase Database and stores data in Track object.
@@ -53,7 +64,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath) as! TrackCell
         
-        cell.nameLabel.text = trackData[indexPath.row].title
+        cell.nameLabel.text = trackData[indexPath.row].artist
+        cell.trackName.text = trackData[indexPath.row].title
         
         // Retrieves url of cover art image of current track
         let currentTrackImage = trackData[indexPath.row].imageUrl
@@ -96,7 +108,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return
             } else {
                 player = AVPlayer(url: url! as URL)
-                player.play()
+                player?.play()
             }
         }
         

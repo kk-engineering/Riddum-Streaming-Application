@@ -14,9 +14,13 @@ class TrackCell: UITableViewCell {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var likesLabel: UILabel!
-    @IBOutlet weak var likeButton: UIButton!
-    @IBOutlet weak var unlikeButton: UIButton!
+    @IBOutlet weak var trackName: UILabel!
+    
+    
+    
+//    @IBOutlet weak var likesLabel: UILabel!
+//    @IBOutlet weak var likeButton: UIButton!
+//    @IBOutlet weak var unlikeButton: UIButton!
     
     var userID: String!
 }

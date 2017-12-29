@@ -18,7 +18,8 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var uploadLabel: UILabel!
+
+    @IBOutlet weak var artistLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +70,7 @@ class PlayerViewController: UIViewController {
                 dateFormatter.dateFormat = "EEE, dd MMM yyyy"
                 let trackCreated = metadata!.timeCreated
                 let newDate = dateFormatter.string(from: trackCreated!)
-                self.uploadLabel.text = ("Added: \(newDate)")
+               // self.uploadLabel.text = ("Added: \(newDate)")
             }
         }
     }
@@ -79,15 +80,15 @@ class PlayerViewController: UIViewController {
     
     // Action for play button.
     @IBAction func play(_ sender: Any) {
-        if playerFilled == true && player.timeControlStatus == .paused {
-            player.play()
+        if playerFilled == true && player?.timeControlStatus == .paused {
+            player?.play()
         }
     }
     
     // Action for pause button.
     @IBAction func pause(_ sender: Any) {
-        if playerFilled == true && player.timeControlStatus == .playing {
-            player.pause()
+        if playerFilled == true && player?.timeControlStatus == .playing {
+            player?.pause()
         }
     }
     
@@ -118,7 +119,7 @@ class PlayerViewController: UIViewController {
     // Action for slider control.
     @IBAction func slider(_ sender: UISlider) {
         if playerFilled == true {
-            player.volume = sender.value
+            player?.volume = sender.value
         }
     }
     
@@ -134,8 +135,10 @@ class PlayerViewController: UIViewController {
                 return
             } else {
                 player = AVPlayer(url: url! as URL)
-                player.play()
+                player?.play()
             }
         }
     }
 }
+
+

@@ -15,6 +15,7 @@ struct Track {
     var artist: String!
     var imageUrl: String!
     var url: String!
+    var seconds: Double!
         
     init(title: String, artist: String, image_url: String, url: String) {
         self.title = title
@@ -32,4 +33,6 @@ struct Track {
         imageUrl = snapshotValue["image_url"] as! String
         url = snapshotValue["url"] as! String
     }
+    
+    
 }

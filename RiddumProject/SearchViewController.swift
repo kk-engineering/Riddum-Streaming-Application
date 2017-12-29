@@ -15,6 +15,8 @@ let searchController = UISearchController(searchResultsController: nil)
 var tracksArray = [NSDictionary?]()
 var filteredTracks = [NSDictionary?]()
 
+var timeData: [Time] = []
+
 class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
     @IBOutlet var searchTableView: UITableView!
@@ -25,16 +27,45 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSearchController()
+        
+//        if #available(iOS 11.0, *) {
+//            navigationController?.navigationBar.prefersLargeTitles = true
+//            navigationItem.largeTitleDisplayMode = .automatic
+//            navigationItem.searchController = UISearchController(searchResultsController: nil)
+//            navigationItem.hidesSearchBarWhenScrolling = false
+//
+//        } else {
+//            setupSearchController()
+//        }
+      
+        setupNavBar()
+        setupSearch()
+        //setupSearchController()
         retrieveTracksForSearch()
     }
     
     // Creates search controller and appends search bar to tableView's header.
     func setupSearchController() {
+//        searchController.searchResultsUpdater = self
+//        searchController.dimsBackgroundDuringPresentation = false
+//        definesPresentationContext = true
+//        tableView.tableHeaderView = searchController.searchBar
+    }
+    
+    func setupNavBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.searchController = searchController
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir", size: 34)!]
+    }
+    
+    func setupSearch() {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
     }
     
     // Retrieves tracks from Firebase Database and appends this data to tracksArray. Rows are then inserted into the searchTableView.
@@ -78,7 +109,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchCell
         
         let track : NSDictionary?
         
@@ -89,8 +120,8 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
             track = tracksArray[indexPath.row]
         }
         
-        cell.textLabel?.text = track?["title"] as? String
-        cell.detailTextLabel?.text = track?["artist"] as? String
+        cell.trackLabel?.text = track?["title"] as? String
+        cell.artistLabel?.text = track?["artist"] as? String
         
         return cell
     }
@@ -114,8 +145,31 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
                 print(error!.localizedDescription)
                 return
             } else {
-                player = AVPlayer(url: url! as URL)
-                player.play()
+                let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
+                player = AVPlayer(playerItem: playerItem)
+                //player = AVPlayer(url: url! as URL)
+                player?.play()
+                
+//                let duration : CMTime = playerItem.asset.duration
+//                let seconds : Float64 = CMTimeGetSeconds(duration)
+//
+//                timeData.append(Time(seconds: seconds))
+//
+//                let currentTime = timeData[indexPath.row].seconds
+//                print("Current Time: \(currentTime)")
+                
+                if let duration = playerItem?.asset.duration {
+                    let seconds = CMTimeGetSeconds(duration)
+                    
+                    let secondsText:Int = Int(seconds) % 60
+                    
+                    print("00:\(secondsText)")
+                }
+
+                
+
+                
+                //This works so need to push the duration to the SearchPlayer - may be able to append to an object - and the field to the track object perhaps e.g. Duration
             }
         }
         

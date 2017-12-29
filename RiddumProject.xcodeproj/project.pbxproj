@@ -8,9 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		56EA06C022461C0F5A48B228 /* Pods_RiddumProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2656384B9BF317A567BA18F1 /* Pods_RiddumProject.framework */; };
+		802648051F9E915B005D3C9F /* NewSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802648041F9E915B005D3C9F /* NewSearchViewController.swift */; };
+		802648071F9E9880005D3C9F /* ArtistSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802648061F9E9880005D3C9F /* ArtistSearchCell.swift */; };
+		80282F151F7303D300E8B5DF /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80282F141F7303D300E8B5DF /* MessagesViewController.swift */; };
+		803581F51FDCCD75002E6A45 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803581F41FDCCD75002E6A45 /* Time.swift */; };
+		8038792C1F770C8C0020828D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038792B1F770C8C0020828D /* ProfileViewController.swift */; };
 		805EEB121F255CF000039DAA /* SearchPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805EEB111F255CF000039DAA /* SearchPlayerViewController.swift */; };
+		807F10241FA7DDE300ED0E65 /* ProjectSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807F10231FA7DDE300ED0E65 /* ProjectSearchCell.swift */; };
+		808E6CEC1F2C1C4400CA6260 /* LogInTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E6CEB1F2C1C4400CA6260 /* LogInTextField.swift */; };
 		80BF1B501F21632900044839 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 80BF1B4E1F21632900044839 /* search@2x.png */; };
 		80BF1B511F21632900044839 /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 80BF1B4F1F21632900044839 /* search@3x.png */; };
+		80CABF8A1FA63D2200623F1C /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CABF891FA63D2200623F1C /* Artist.swift */; };
+		80CABF8C1FA651DF00623F1C /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CABF8B1FA651DF00623F1C /* Project.swift */; };
+		80FCDFAF1FC0B51E0028BE35 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 80FCDFAE1FC0B51E0028BE35 /* Avenir.ttc */; };
+		80FCDFB11FC0EB420028BE35 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FCDFB01FC0EB420028BE35 /* SearchCell.swift */; };
 		D90F33691E9982A7004035E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90F33681E9982A7004035E4 /* AppDelegate.swift */; };
 		D90F336E1E9982A7004035E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90F336C1E9982A7004035E4 /* Main.storyboard */; };
 		D90F33701E9982A7004035E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D90F336F1E9982A7004035E4 /* Assets.xcassets */; };
@@ -33,10 +44,6 @@
 		D95054031EBFFFF300B859F8 /* Circled Play Filled_50.png in Resources */ = {isa = PBXBuildFile; fileRef = D95054011EBFFFF300B859F8 /* Circled Play Filled_50.png */; };
 		D95054071EC0000000B859F8 /* Circled Pause Filled_100.png in Resources */ = {isa = PBXBuildFile; fileRef = D95054051EC0000000B859F8 /* Circled Pause Filled_100.png */; };
 		D95054081EC0000000B859F8 /* Circled Pause Filled_50.png in Resources */ = {isa = PBXBuildFile; fileRef = D95054061EC0000000B859F8 /* Circled Pause Filled_50.png */; };
-		D950540C1EC0001B00B859F8 /* Fast Forward Filled_100.png in Resources */ = {isa = PBXBuildFile; fileRef = D950540A1EC0001B00B859F8 /* Fast Forward Filled_100.png */; };
-		D950540D1EC0001B00B859F8 /* Fast Forward Filled_50.png in Resources */ = {isa = PBXBuildFile; fileRef = D950540B1EC0001B00B859F8 /* Fast Forward Filled_50.png */; };
-		D95054111EC0002600B859F8 /* Rewind Filled_100.png in Resources */ = {isa = PBXBuildFile; fileRef = D950540F1EC0002600B859F8 /* Rewind Filled_100.png */; };
-		D95054121EC0002600B859F8 /* Rewind Filled_50.png in Resources */ = {isa = PBXBuildFile; fileRef = D95054101EC0002600B859F8 /* Rewind Filled_50.png */; };
 		D95054161EC0002E00B859F8 /* Chevron Down_100.png in Resources */ = {isa = PBXBuildFile; fileRef = D95054141EC0002E00B859F8 /* Chevron Down_100.png */; };
 		D95054171EC0002E00B859F8 /* Chevron Down_50.png in Resources */ = {isa = PBXBuildFile; fileRef = D95054151EC0002E00B859F8 /* Chevron Down_50.png */; };
 		D95054191EC4740D00B859F8 /* RIDDUMLOGO.png in Resources */ = {isa = PBXBuildFile; fileRef = D95054181EC4740D00B859F8 /* RIDDUMLOGO.png */; };
@@ -47,10 +54,29 @@
 /* Begin PBXFileReference section */
 		2656384B9BF317A567BA18F1 /* Pods_RiddumProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RiddumProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		699A0F76A52141ED5AB304BD /* Pods-RiddumProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RiddumProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-RiddumProject/Pods-RiddumProject.release.xcconfig"; sourceTree = "<group>"; };
+		802648041F9E915B005D3C9F /* NewSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSearchViewController.swift; sourceTree = "<group>"; };
+		802648061F9E9880005D3C9F /* ArtistSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSearchCell.swift; sourceTree = "<group>"; };
+		80282F141F7303D300E8B5DF /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		803581F41FDCCD75002E6A45 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		8038792B1F770C8C0020828D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		805EEB111F255CF000039DAA /* SearchPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPlayerViewController.swift; sourceTree = "<group>"; };
+		807191791FD300E70063CA44 /* playButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playButton@3x.png"; sourceTree = "<group>"; };
+		8071917A1FD300E70063CA44 /* playButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playButton@2x.png"; sourceTree = "<group>"; };
+		8071917D1FD31C910063CA44 /* pauseButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pauseButton@3x.png"; sourceTree = "<group>"; };
+		8071917E1FD31C920063CA44 /* pauseButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pauseButton@2x.png"; sourceTree = "<group>"; };
+		8071917F1FD320A20063CA44 /* forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward@2x.png"; sourceTree = "<group>"; };
+		807191801FD320A30063CA44 /* forward@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward@3x.png"; sourceTree = "<group>"; };
+		807191811FD320BA0063CA44 /* rewind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewind@2x.png"; sourceTree = "<group>"; };
+		807191821FD320BB0063CA44 /* rewind@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewind@3x.png"; sourceTree = "<group>"; };
+		807F10231FA7DDE300ED0E65 /* ProjectSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSearchCell.swift; sourceTree = "<group>"; };
+		808E6CEB1F2C1C4400CA6260 /* LogInTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInTextField.swift; sourceTree = "<group>"; };
 		80BF1B4E1F21632900044839 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		80BF1B4F1F21632900044839 /* search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@3x.png"; sourceTree = "<group>"; };
 		80BF1B531F21925C00044839 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		80CABF891FA63D2200623F1C /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		80CABF8B1FA651DF00623F1C /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		80FCDFAE1FC0B51E0028BE35 /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
+		80FCDFB01FC0EB420028BE35 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		D90F33651E9982A7004035E4 /* RiddumProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiddumProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D90F33681E9982A7004035E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D90F336D1E9982A7004035E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,10 +101,6 @@
 		D95054011EBFFFF300B859F8 /* Circled Play Filled_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Circled Play Filled_50.png"; sourceTree = "<group>"; };
 		D95054051EC0000000B859F8 /* Circled Pause Filled_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Circled Pause Filled_100.png"; sourceTree = "<group>"; };
 		D95054061EC0000000B859F8 /* Circled Pause Filled_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Circled Pause Filled_50.png"; sourceTree = "<group>"; };
-		D950540A1EC0001B00B859F8 /* Fast Forward Filled_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fast Forward Filled_100.png"; sourceTree = "<group>"; };
-		D950540B1EC0001B00B859F8 /* Fast Forward Filled_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fast Forward Filled_50.png"; sourceTree = "<group>"; };
-		D950540F1EC0002600B859F8 /* Rewind Filled_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rewind Filled_100.png"; sourceTree = "<group>"; };
-		D95054101EC0002600B859F8 /* Rewind Filled_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rewind Filled_50.png"; sourceTree = "<group>"; };
 		D95054141EC0002E00B859F8 /* Chevron Down_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chevron Down_100.png"; sourceTree = "<group>"; };
 		D95054151EC0002E00B859F8 /* Chevron Down_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chevron Down_50.png"; sourceTree = "<group>"; };
 		D95054181EC4740D00B859F8 /* RIDDUMLOGO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RIDDUMLOGO.png; path = ../../../Documents/website/RIDDUMLOGO.png; sourceTree = "<group>"; };
@@ -130,6 +152,7 @@
 		D90F335C1E9982A7004035E4 = {
 			isa = PBXGroup;
 			children = (
+				80FCDFAE1FC0B51E0028BE35 /* Avenir.ttc */,
 				D90F33671E9982A7004035E4 /* RiddumProject */,
 				80BF1B531F21925C00044839 /* README.md */,
 				D90F33661E9982A7004035E4 /* Products */,
@@ -168,8 +191,11 @@
 				D90F337E1E99B46E004035E4 /* LoginViewController.swift */,
 				D93AE66F1E9C12A900C0EDFB /* FeedViewController.swift */,
 				D9E96E0A1F18A6D4006E8D6A /* SearchViewController.swift */,
+				802648041F9E915B005D3C9F /* NewSearchViewController.swift */,
 				D942750B1EB250DA0008A164 /* PlayerViewController.swift */,
 				805EEB111F255CF000039DAA /* SearchPlayerViewController.swift */,
+				80282F141F7303D300E8B5DF /* MessagesViewController.swift */,
+				8038792B1F770C8C0020828D /* ProfileViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +204,10 @@
 			isa = PBXGroup;
 			children = (
 				D93AE66D1E9C0FFA00C0EDFB /* TrackCell.swift */,
+				80FCDFB01FC0EB420028BE35 /* SearchCell.swift */,
+				808E6CEB1F2C1C4400CA6260 /* LogInTextField.swift */,
+				802648061F9E9880005D3C9F /* ArtistSearchCell.swift */,
+				807F10231FA7DDE300ED0E65 /* ProjectSearchCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -187,6 +217,9 @@
 			children = (
 				D9E96E081F1855D6006E8D6A /* Track.swift */,
 				D93AE6751E9C17C300C0EDFB /* User.swift */,
+				80CABF891FA63D2200623F1C /* Artist.swift */,
+				80CABF8B1FA651DF00623F1C /* Project.swift */,
+				803581F41FDCCD75002E6A45 /* Time.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -212,11 +245,17 @@
 		D95053EB1EBFED1500B859F8 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				8071917F1FD320A20063CA44 /* forward@2x.png */,
+				807191801FD320A30063CA44 /* forward@3x.png */,
+				807191811FD320BA0063CA44 /* rewind@2x.png */,
+				807191821FD320BB0063CA44 /* rewind@3x.png */,
+				8071917E1FD31C920063CA44 /* pauseButton@2x.png */,
+				8071917D1FD31C910063CA44 /* pauseButton@3x.png */,
+				8071917A1FD300E70063CA44 /* playButton@2x.png */,
+				807191791FD300E70063CA44 /* playButton@3x.png */,
 				D95054181EC4740D00B859F8 /* RIDDUMLOGO.png */,
 				80BF1B521F21633100044839 /* Search  */,
 				D95054131EC0002E00B859F8 /* Chevron Down 50, 100 px */,
-				D950540E1EC0002600B859F8 /* Rewind Filled 50, 100 px */,
-				D95054091EC0001B00B859F8 /* Fast Forward Filled 50, 100 px */,
 				D95054041EC0000000B859F8 /* Circled Pause Filled 50, 100 px */,
 				D95053FF1EBFFFF300B859F8 /* Circled Play Filled 50, 100 px */,
 				D95053FA1EBFF90000B859F8 /* Activity Feed 50, 100 px */,
@@ -274,26 +313,6 @@
 			);
 			name = "Circled Pause Filled 50, 100 px";
 			path = "../../../Downloads/Circled Pause Filled 50, 100 px";
-			sourceTree = "<group>";
-		};
-		D95054091EC0001B00B859F8 /* Fast Forward Filled 50, 100 px */ = {
-			isa = PBXGroup;
-			children = (
-				D950540A1EC0001B00B859F8 /* Fast Forward Filled_100.png */,
-				D950540B1EC0001B00B859F8 /* Fast Forward Filled_50.png */,
-			);
-			name = "Fast Forward Filled 50, 100 px";
-			path = "../../../Downloads/Fast Forward Filled 50, 100 px";
-			sourceTree = "<group>";
-		};
-		D950540E1EC0002600B859F8 /* Rewind Filled 50, 100 px */ = {
-			isa = PBXGroup;
-			children = (
-				D950540F1EC0002600B859F8 /* Rewind Filled_100.png */,
-				D95054101EC0002600B859F8 /* Rewind Filled_50.png */,
-			);
-			name = "Rewind Filled 50, 100 px";
-			path = "../../../Downloads/Rewind Filled 50, 100 px";
 			sourceTree = "<group>";
 		};
 		D95054131EC0002E00B859F8 /* Chevron Down 50, 100 px */ = {
@@ -372,13 +391,11 @@
 				D95053F91EBFF8EB00B859F8 /* friends@2x.png in Resources */,
 				80BF1B511F21632900044839 /* search@3x.png in Resources */,
 				D95054071EC0000000B859F8 /* Circled Pause Filled_100.png in Resources */,
-				D95054111EC0002600B859F8 /* Rewind Filled_100.png in Resources */,
 				D95054031EBFFFF300B859F8 /* Circled Play Filled_50.png in Resources */,
 				D90F337B1E998386004035E4 /* GoogleService-Info.plist in Resources */,
-				D950540D1EC0001B00B859F8 /* Fast Forward Filled_50.png in Resources */,
 				D95054081EC0000000B859F8 /* Circled Pause Filled_50.png in Resources */,
+				80FCDFAF1FC0B51E0028BE35 /* Avenir.ttc in Resources */,
 				D95054021EBFFFF300B859F8 /* Circled Play Filled_100.png in Resources */,
-				D95054121EC0002600B859F8 /* Rewind Filled_50.png in Resources */,
 				D95053F31EBFF8E100B859F8 /* airpods@3x.png in Resources */,
 				D90F33731E9982A7004035E4 /* LaunchScreen.storyboard in Resources */,
 				D95053FE1EBFF90000B859F8 /* Activity Feed_50.png in Resources */,
@@ -390,7 +407,6 @@
 				D95054191EC4740D00B859F8 /* RIDDUMLOGO.png in Resources */,
 				D95053F41EBFF8E100B859F8 /* airpods@2x.png in Resources */,
 				D95053FD1EBFF90000B859F8 /* Activity Feed_100.png in Resources */,
-				D950540C1EC0001B00B859F8 /* Fast Forward Filled_100.png in Resources */,
 				D95054171EC0002E00B859F8 /* Chevron Down_50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,12 +469,22 @@
 				D93AE66E1E9C0FFA00C0EDFB /* TrackCell.swift in Sources */,
 				D9E96E0B1F18A6D4006E8D6A /* SearchViewController.swift in Sources */,
 				D9E96E091F1855D6006E8D6A /* Track.swift in Sources */,
+				802648051F9E915B005D3C9F /* NewSearchViewController.swift in Sources */,
+				80FCDFB11FC0EB420028BE35 /* SearchCell.swift in Sources */,
+				802648071F9E9880005D3C9F /* ArtistSearchCell.swift in Sources */,
+				807F10241FA7DDE300ED0E65 /* ProjectSearchCell.swift in Sources */,
 				D90F337F1E99B46E004035E4 /* LoginViewController.swift in Sources */,
 				805EEB121F255CF000039DAA /* SearchPlayerViewController.swift in Sources */,
 				D93AE6761E9C17C300C0EDFB /* User.swift in Sources */,
+				80282F151F7303D300E8B5DF /* MessagesViewController.swift in Sources */,
+				808E6CEC1F2C1C4400CA6260 /* LogInTextField.swift in Sources */,
+				803581F51FDCCD75002E6A45 /* Time.swift in Sources */,
 				D93AE6701E9C12A900C0EDFB /* FeedViewController.swift in Sources */,
 				D90F337D1E998C25004035E4 /* SignUpViewController.swift in Sources */,
+				8038792C1F770C8C0020828D /* ProfileViewController.swift in Sources */,
 				D90F33691E9982A7004035E4 /* AppDelegate.swift in Sources */,
+				80CABF8C1FA651DF00623F1C /* Project.swift in Sources */,
+				80CABF8A1FA63D2200623F1C /* Artist.swift in Sources */,
 				D942750C1EB250DA0008A164 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,6 +611,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = YQ76DJ84LJ;
 				INFOPLIST_FILE = RiddumProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = code.medkaikai.RiddumProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -601,6 +628,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = YQ76DJ84LJ;
 				INFOPLIST_FILE = RiddumProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = code.medkaikai.RiddumProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
