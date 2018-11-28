@@ -39,23 +39,23 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
 
-    @IBAction func selectImagePressed(_ sender: Any) {
-        
-        // Presents picker showcasing images from user photo library.
-        picker.allowsEditing = true
-        picker.sourceType = .photoLibrary
-        
-        present(picker, animated: true , completion: nil)
-    }
+//    @IBAction func selectImagePressed(_ sender: Any) {
+//
+//        // Presents picker showcasing images from user photo library.
+//        picker.allowsEditing = true
+//        picker.sourceType = .photoLibrary
+//
+//        present(picker, animated: true , completion: nil)
+//    }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
-            self.imageView.image = image
-            nextBtn.isHidden = false
-        }
-        
-        self.dismiss(animated: true, completion: nil)
-    }
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+//            self.imageView.image = image
+//            nextBtn.isHidden = false
+//        }
+//
+//        self.dismiss(animated: true, completion: nil)
+//    }
 
     @IBAction func nextPressed(_ sender: Any) {
         
@@ -75,33 +75,35 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
                 
                 if let user = user {
                     
+                    let username = self.nameField.text!.lowercased()
+                    let newUsername = username.replacingOccurrences(of: " ", with: "_")
+                    
                      let changeRequest = FIRAuth.auth()!.currentUser!.profileChangeRequest()
-                     changeRequest.displayName = self.nameField.text!
+                    changeRequest.displayName = newUsername
                      changeRequest.commitChanges(completion: nil)
                     
                     
-                     // Stores profile image into firebase storage.
-                     let imageRef = self.userStorage.child("\(user.uid).jpg ")
+//                     // Stores profile image into firebase storage.
+//                     let imageRef = self.userStorage.child("\(user.uid).jpg ")
+//
+//                     let data = UIImageJPEGRepresentation(self.imageView.image!, 0.5)
+//
+//                     let uploadTask = imageRef.put(data!, metadata: nil, completion: { (metadata, err) in
+//                        if err != nil {
+//                            print(err!.localizedDescription)
+//                        }
+//
+//                        // Retrieves url of profile image.
+//                        imageRef.downloadURL(completion: { (url, er) in
+//                            if er != nil {
+//                                print (er!.localizedDescription)
+//                            }
                     
-                     let data = UIImageJPEGRepresentation(self.imageView.image!, 0.5)
+//                            if let url = url {
                     
-                     let uploadTask = imageRef.put(data!, metadata: nil, completion: { (metadata, err) in
-                        if err != nil {
-                            print(err!.localizedDescription)
-                        }
-                        
-                        // Retrieves url of profile image.
-                        imageRef.downloadURL(completion: { (url, er) in
-                            if er != nil {
-                                print (er!.localizedDescription)
-                            }
-                            
-                            if let url = url {
-                                
                                 let userInfo: [String : Any] = ["uid" : user.uid,
-                                                                "username" : self.nameField.text!,
-                                                                "urlToImage" : url.absoluteString ]
-                                
+                                                                "username" : newUsername]
+//                                "urlToImage" : url.absoluteString
                                 // Stores value of userInfo array into users into Firebase Database.
                                 self.ref.child("users").child(user.uid).setValue(userInfo)
                                 
@@ -109,10 +111,10 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
                                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabVC")
                                 
                                 self.present(vc, animated: true, completion: nil)
-                            }
-                        })
-                     })
-                    uploadTask.resume()
+//                            }
+//                        })
+//                     })
+//                    uploadTask.resume()
                 }
             })
         } else {

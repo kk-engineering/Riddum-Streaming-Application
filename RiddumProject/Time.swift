@@ -14,8 +14,8 @@ struct Time {
     
     var seconds: Double!
     
-    init(seconds: Double) {
+    init(secondsText: Double) {
 
-        self.seconds = seconds
+        self.seconds = secondsText
     }
 }

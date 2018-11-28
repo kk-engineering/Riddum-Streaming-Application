@@ -11,19 +11,28 @@ import Firebase
 
 struct Project {
     
-    var name: String!
+    var artist: String!
     var imageUrl: String!
+    var projectTitle: String!
     
-    init(name: String, image_url: String) {
-        self.name = name
-        self.imageUrl = image_url
+
+    
+    init(project_artist: String, project_image_url: String, project_title: String) {
+        self.artist = project_artist
+        self.imageUrl = project_image_url
+        self.projectTitle = project_title
+        
+
     }
     
     init(snapshot: FIRDataSnapshot) {
         
         let snapshotValue = snapshot.value as! [String : AnyObject]
         
-        name = snapshotValue["name"] as! String
-        imageUrl = snapshotValue["image_url"] as! String
+        artist = snapshotValue["project_artist"] as? String
+        imageUrl = snapshotValue["project_image_url"] as? String
+        projectTitle = snapshotValue["project_title"] as? String
+        
+
     }
 }
