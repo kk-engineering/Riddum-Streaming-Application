@@ -15,3 +15,11 @@ Open RiddumProject.xcworkspace
 
 Med Kaikai <br/>
 <medkaikai@gmail.com>
+
+## Design Sketches
+
+![Picture](https://github.com/kk-engineering/Riddum-Streaming-Application/blob/master/RiddumProject/1.png)
+![Picture](https://github.com/kk-engineering/Riddum-Streaming-Application/blob/master/RiddumProject/2.png)
+![Picture](https://github.com/kk-engineering/Riddum-Streaming-Application/blob/master/RiddumProject/3.png)
+![Picture](https://github.com/kk-engineering/Riddum-Streaming-Application/blob/master/RiddumProject/4.png)
+![Picture](https://github.com/kk-engineering/Riddum-Streaming-Application/blob/master/RiddumProject/5.png)
